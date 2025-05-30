@@ -3,53 +3,1202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upendra Sen Chakma - Research</title>
+    <title>Dr. Alex Morgan | Research Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        header { text-align: center; font-size: 24px; font-weight: bold; }
-        nav { text-align: center; margin: 20px; }
-        nav a { margin: 0 15px; text-decoration: none; font-weight: bold; }
-        section { max-width: 800px; margin: auto; padding: 20px; }
-        footer { text-align: center; margin-top: 50px; font-size: 14px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a192f;
+            --secondary: #112240;
+            --accent: #64ffda;
+            --light: #ccd6f6;
+            --lighter: #e6f1ff;
+            --dark: #020c1b;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: var(--lighter);
+            background: var(--dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1465101162946-4377e57745c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(2, 12, 27, 0.7);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--secondary);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: var(--light);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 100px;
+            padding-bottom: 80px;
+        }
+
+        .section {
+            background: rgba(17, 34, 64, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(2, 12, 27, 0.5);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .section-title {
+            font-family: 'Roboto', sans-serif;
+            color: var(--accent);
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(100, 255, 218, 0.3);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .home-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .profile-image {
+            flex: 0 0 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .intro-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+
+        .intro-text h2 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .intro-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* CV Section */
+        .cv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .cv-card {
+            background: rgba(10, 25, 47, 0.7);
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cv-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(2, 12, 27, 0.5);
+        }
+
+        .cv-card h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .cv-item {
+            margin-bottom: 20px;
+        }
+
+        .cv-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .cv-item h4 {
+            color: var(--light);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .cv-item .date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        /* Research Section */
+        .research-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        .research-tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .research-tab.active {
+            color: var(--accent);
+        }
+
+        .research-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .research-tab.active::after,
+        .research-tab:hover::after {
+            width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .research-item {
+            background: rgba(10, 25, 47, 0.7);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .research-item h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .research-item p {
+            margin-bottom: 15px;
+        }
+
+        .research-item .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: rgba(10, 25, 47, 0.7);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(2, 12, 27, 0.5);
+        }
+
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-content .date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .blog-content h3 {
+            color: var(--light);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .blog-content p {
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Events Section */
+        .events-timeline {
+            position: relative;
+            margin-left: 20px;
+            padding-left: 30px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .event-item {
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .event-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--secondary);
+        }
+
+        .event-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .event-title {
+            color: var(--light);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .event-location {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(10, 25, 47, 0.7);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 4px;
+            color: var(--light);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .btn {
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #52e0c4;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+        }
+
+        /* Comments Section */
+        .comments-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .comment-form {
+            background: rgba(10, 25, 47, 0.7);
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .comment-form h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .comment-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .comment-card {
+            background: rgba(10, 25, 47, 0.7);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .comment-date {
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 25, 47, 0.95);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .home-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-image {
+                margin-bottom: 30px;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav li {
+                margin: 10px 20px;
+            }
+            
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background: transparent;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>Upendra Sen Chakma</header>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#research">Research</a>
-        <a href="#cv">CV</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    
-    <section id="home">
-        <h2>Welcome</h2>
-        <p>Welcome to my personal research website. I am a physics researcher specializing in experimental particle physics and cosmology.</p>
-    </section>
-    
-    <section id="research">
-        <h2>Research</h2>
-        <p>My research focuses on Quark-Gluon Plasma, 21cm signal analysis, and X-ray imaging in galaxy clusters.</p>
-    </section>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-star"></i>
+                Dr. Alex Morgan
+            </a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#cv">CV & Education</a></li>
+                    <li class="dropdown">
+                        <a href="#research">Research <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#research-interests">Research Interests</a>
+                            <a href="#completed-projects">Completed Projects</a>
+                            <a href="#ongoing-projects">Ongoing Projects</a>
+                            <a href="#research-opportunity">Research Opportunity</a>
+                        </div>
+                    </li>
+                    <li><a href="#blog">Science Blog</a></li>
+                    <li><a href="#events">Upcoming Events</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#comments">Comments</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <section id="current projects">
-        <h2>Current projects</h2>
-    </section>
-    
-    <section id="cv">
-        <h2>Curriculum Vitae</h2>
-        <p>Download my CV: <a href="cv.pdf" target="_blank">Click Here</a></p>
-    </section>
-    
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: upendrasen@example.com</p>
-        <p>GitHub: <a href="https://github.com/upendrasen" target="_blank">github.com/upendrasen</a></p>
-    </section>
-    
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <div class="home-content">
+                <div class="profile-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Dr. Alex Morgan">
+                </div>
+                <div class="intro-text">
+                    <h1>Dr. Alex Morgan</h1>
+                    <h2>Astrophysicist & Research Scientist</h2>
+                    <p>Welcome to my research website. I specialize in observational cosmology and galaxy formation. My work focuses on understanding the evolution of galaxies through multi-wavelength observations and theoretical modeling.</p>
+                    <p>Currently, I am a Senior Research Fellow at the International Space Science Institute, where I lead projects on dark matter distribution and cosmic structure formation.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-researchgate"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CV & Education Section -->
+        <section id="cv" class="section">
+            <h2 class="section-title">CV & Education</h2>
+            <div class="cv-grid">
+                <div class="cv-card">
+                    <h3>Education</h3>
+                    <div class="cv-item">
+                        <h4>PhD in Astrophysics</h4>
+                        <div class="date">2014 - 2018</div>
+                        <p>Harvard University, Cambridge, MA</p>
+                        <p>Thesis: "Galaxy Evolution in High-Density Environments"</p>
+                    </div>
+                    <div class="cv-item">
+                        <h4>MSc in Astronomy</h4>
+                        <div class="date">2012 - 2014</div>
+                        <p>California Institute of Technology, Pasadena, CA</p>
+                    </div>
+                    <div class="cv-item">
+                        <h4>BSc in Physics</h4>
+                        <div class="date">2008 - 2012</div>
+                        <p>Massachusetts Institute of Technology, Cambridge, MA</p>
+                    </div>
+                </div>
+                
+                <div class="cv-card">
+                    <h3>Experience</h3>
+                    <div class="cv-item">
+                        <h4>Senior Research Fellow</h4>
+                        <div class="date">2020 - Present</div>
+                        <p>International Space Science Institute</p>
+                        <p>Leading research on dark matter distribution using gravitational lensing techniques.</p>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Postdoctoral Researcher</h4>
+                        <div class="date">2018 - 2020</div>
+                        <p>European Southern Observatory</p>
+                        <p>Worked on ALMA observations of distant galaxy clusters.</p>
+                    </div>
+                </div>
+                
+                <div class="cv-card">
+                    <h3>Skills & Expertise</h3>
+                    <div class="cv-item">
+                        <h4>Research Methods</h4>
+                        <p>Observational astronomy, data reduction, statistical analysis, numerical simulations</p>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Technical Skills</h4>
+                        <p>Python, C++, IDL, SQL, LaTeX, Linux, Git, Machine Learning</p>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Observational Experience</h4>
+                        <p>Hubble Space Telescope, ALMA, VLT, Keck Observatory, Chandra X-ray Observatory</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="section">
+            <h2 class="section-title">Research</h2>
+            
+            <div class="research-tabs">
+                <button class="research-tab active" data-tab="interests">Research Interests</button>
+                <button class="research-tab" data-tab="completed">Completed Projects</button>
+                <button class="research-tab" data-tab="ongoing">Ongoing Projects</button>
+                <button class="research-tab" data-tab="opportunity">Research Opportunity</button>
+            </div>
+            
+            <div id="interests" class="tab-content active">
+                <div class="research-item">
+                    <h3>Galaxy Formation and Evolution</h3>
+                    <p>Investigating the physical processes that drive galaxy evolution across cosmic time, with a focus on the role of environment and feedback mechanisms.</p>
+                    <div class="tags">
+                        <span class="tag">Galaxy Clusters</span>
+                        <span class="tag">Star Formation</span>
+                        <span class="tag">Chemical Evolution</span>
+                    </div>
+                </div>
+                
+                <div class="research-item">
+                    <h3>Dark Matter Distribution</h3>
+                    <p>Mapping dark matter in galaxy clusters using gravitational lensing techniques and studying its connection to baryonic matter.</p>
+                    <div class="tags">
+                        <span class="tag">Weak Lensing</span>
+                        <span class="tag">N-body Simulations</span>
+                        <span class="tag">Halo Models</span>
+                    </div>
+                </div>
+                
+                <div class="research-item">
+                    <h3>High-Redshift Universe</h3>
+                    <p>Studying the earliest galaxies and quasars to understand the epoch of reionization and the formation of the first structures.</p>
+                    <div class="tags">
+                        <span class="tag">JWST</span>
+                        <span class="tag">ALMA</span>
+                        <span class="tag">Reionization</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="completed" class="tab-content">
+                <div class="research-item">
+                    <h3>CLASH: Cluster Lensing And Supernova Survey</h3>
+                    <p>Multi-cycle treasury program with the Hubble Space Telescope to map the distribution of dark matter in 25 massive galaxy clusters.</p>
+                    <div class="tags">
+                        <span class="tag">Completed</span>
+                        <span class="tag">HST</span>
+                        <span class="tag">Dark Matter</span>
+                    </div>
+                </div>
+                
+                <div class="research-item">
+                    <h3>Galaxy Zoo: Understanding Galaxy Morphology</h3>
+                    <p>Citizen science project classifying galaxy morphologies for over a million galaxies from SDSS and Hubble imaging.</p>
+                    <div class="tags">
+                        <span class="tag">Completed</span>
+                        <span class="tag">Citizen Science</span>
+                        <span class="tag">Morphology</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="ongoing" class="tab-content">
+                <div class="research-item">
+                    <h3>COSMOS-Web: JWST Treasury Survey</h3>
+                    <p>Largest JWST Cycle 1 survey program mapping 0.6 square degrees with NIRCam and MIRI to study galaxy assembly and dark matter.</p>
+                    <div class="tags">
+                        <span class="tag">Ongoing</span>
+                        <span class="tag">JWST</span>
+                        <span class="tag">High-z Galaxies</span>
+                    </div>
+                </div>
+                
+                <div class="research-item">
+                    <h3>ALMA Galaxy Cluster Survey</h3>
+                    <p>Studying molecular gas in galaxy clusters to understand environmental effects on star formation and galaxy evolution.</p>
+                    <div class="tags">
+                        <span class="tag">Ongoing</span>
+                        <span class="tag">ALMA</span>
+                        <span class="tag">Molecular Gas</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="opportunity" class="tab-content">
+                <div class="research-item">
+                    <h3>PhD Positions Available</h3>
+                    <p>We are seeking motivated PhD students to work on JWST data analysis and simulations of galaxy formation. Positions are available starting Fall 2024.</p>
+                    <p><strong>Requirements:</strong> MSc in Astronomy or Physics, experience with Python, background in astrophysics.</p>
+                    <p><a href="#" class="read-more">Apply Now</a></p>
+                </div>
+                
+                <div class="research-item">
+                    <h3>Postdoctoral Fellowship</h3>
+                    <p>Two-year postdoctoral position available for research on dark matter in galaxy clusters using multi-wavelength data.</p>
+                    <p><strong>Requirements:</strong> PhD in Astrophysics, strong publication record, experience with gravitational lensing techniques.</p>
+                    <p><a href="#" class="read-more">Apply Now</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="section">
+            <h2 class="section-title">Science Blog</h2>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=911&q=80" alt="JWST First Images">
+                    </div>
+                    <div class="blog-content">
+                        <div class="date">July 12, 2023</div>
+                        <h3>Unraveling the Mysteries of Early Galaxies with JWST</h3>
+                        <p>The James Webb Space Telescope has revolutionized our view of the early universe. In this post, I discuss the surprising discovery of massive, evolved galaxies at z>10 and what it means for galaxy formation models.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Dark Matter Visualization">
+                    </div>
+                    <div class="blog-content">
+                        <div class="date">May 3, 2023</div>
+                        <h3>Mapping the Invisible: New Techniques in Dark Matter Detection</h3>
+                        <p>Recent advances in weak gravitational lensing have allowed us to create unprecedentedly detailed maps of dark matter distribution. This post explores the methodology and implications of our latest findings.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=894&q=80" alt="ALMA Observatory">
+                    </div>
+                    <div class="blog-content">
+                        <div class="date">March 18, 2023</div>
+                        <h3>Molecular Gas in Cluster Galaxies: ALMA Reveals Environmental Effects</h3>
+                        <p>Our team has completed a survey of molecular gas in galaxies within the Coma cluster. The results show dramatic environmental effects on gas content and star formation efficiency.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="section">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="events-timeline">
+                <div class="event-item">
+                    <div class="event-date">October 15-19, 2023</div>
+                    <h3 class="event-title">International Conference on Galaxy Evolution</h3>
+                    <div class="event-location">Paris, France</div>
+                    <p>Invited talk: "Environmental Effects on Galaxy Evolution in the JWST Era"</p>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">November 7, 2023</div>
+                    <h3 class="event-title">Astronomy Colloquium</h3>
+                    <div class="event-location">California Institute of Technology, Pasadena, CA</div>
+                    <p>Seminar: "Mapping Dark Matter with Next-Generation Telescopes"</p>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">December 3-8, 2023</div>
+                    <h3 class="event-title">Winter School on Cosmology</h3>
+                    <div class="event-location">Aspen, CO</div>
+                    <p>Lecture Series: "Galaxy Clusters as Cosmological Probes"</p>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">January 10-14, 2024</div>
+                    <h3 class="event-title">American Astronomical Society Meeting</h3>
+                    <div class="event-location">New Orleans, LA</div>
+                    <p>Special Session Chair: "New Views on Galaxy Formation with JWST"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Address</h4>
+                                <p>International Space Science Institute<br>Hallerstrasse 6, 3012 Bern, Switzerland</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>alex.morgan@issi.unibe.ch</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+41 31 123 4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Office Hours</h4>
+                                <p>Monday-Friday: 9:00 AM - 5:00 PM CET</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comments Section -->
+        <section id="comments" class="section">
+            <h2 class="section-title">Comments & Discussion</h2>
+            <div class="comments-container">
+                <div class="comment-form">
+                    <h3>Leave a Comment</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="comment-name">Name</label>
+                            <input type="text" id="comment-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comment-email">Email</label>
+                            <input type="email" id="comment-email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comment-text">Comment</label>
+                            <textarea id="comment-text" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Post Comment</button>
+                    </form>
+                </div>
+                
+                <div class="comment-list">
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <div class="comment-author">Dr. Sarah Johnson</div>
+                            <div class="comment-date">August 12, 2023</div>
+                        </div>
+                        <p>Great work on the JWST data analysis, Alex! I'm particularly interested in your findings regarding the stellar mass function at z>8. Have you considered the potential impact of dust extinction in your models?</p>
+                    </div>
+                    
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <div class="comment-author">Prof. Michael Chen</div>
+                            <div class="comment-date">July 28, 2023</div>
+                        </div>
+                        <p>Your recent paper on dark matter distribution was fascinating. I was wondering if you've had a chance to compare your results with the latest simulations from the IllustrisTNG project?</p>
+                    </div>
+                    
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <div class="comment-author">Emma Rodriguez</div>
+                            <div class="comment-date">July 15, 2023</div>
+                        </div>
+                        <p>As a graduate student working in this field, I found your blog post on ALMA observations extremely helpful. Could you recommend any resources for learning advanced data reduction techniques for interferometric data?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
     <footer>
-        &copy; 2025 Upendra Sen Chakma | All Rights Reserved
+        <div class="container footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-researchgate"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Dr. Alex Morgan. All rights reserved.
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // Research tabs functionality
+        const researchTabs = document.querySelectorAll('.research-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        researchTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                researchTabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('nav ul').classList.remove('show');
+                }
+            });
+        });
+
+        // Form submission handling
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! In a real implementation, this would be sent to a server.');
+                form.reset();
+            });
+        });
+    </script>
 </body>
 </html>
 
